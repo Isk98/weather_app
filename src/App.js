@@ -11,20 +11,13 @@ class App extends React.Component{
     humidity :undefined,
     description :undefined,
   };
-  getInputValue=(e)=>{
-    const inputValue = e.target.value;
-    
-    if(e.target.name==="city")
-    return inputValue;
-    else if(e.target.name==="country")
-    return inputValue;
-  };
+
 
   getWeather = async (e)=>{
     e.preventDefault();
     
    
-    const api_call= await fetch("http://api.openweathermap.org/data/2.5/weather?q=${this.getInputValue},${this.getInputValue}&appid=9ddad1106126f78a603385086f9e4bf1")
+    const api_call= await fetch("http://api.openweathermap.org/data/2.5/weather?q={this.state.city},{this.state.country}&appid=9ddad1106126f78a603385086f9e4bf1")
    const data = await api_call.json();
    console.log(data);
  };
