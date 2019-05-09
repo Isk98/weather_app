@@ -1,68 +1,62 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Titles from "./Components/Titles";
 import Form from "./Components/Form";
 import Weather from "./Components/Weather";
+import Day from "./Components/Day";
+import './App.css';
+
 
 class App extends React.Component{
   state = {
     temperature :undefined,
-    city :undefined,
-    country :undefined,
     humidity :undefined,
     description :undefined,
-    error: "",
+    day:undefined,
   };
-
-
-  getWeather = async (city,country)=>{
   
-     const baseUrl = "http://api.openweathermap.org/data/2.5/weather"
-    const appId = "9ddad1106126f78a603385086f9e4bf1"
 
-    const api_call = await fetch(`${baseUrl}?q=${city},${country}&appid=${appId}`)
-    const data = await api_call.json();
-    
-    if (city&&country){
-    console.log(data);
-      this.setState({
-      temperature: data.main.temp,
-      city:data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      description: data.weather[0].description,
-      error: ""
-    })
-    console.log(this.state); // TODO: Update state
-  }
-  else{
-    console.log(data);
-     this.setState({
-      temperature: undefined,
-      city:undefined,
-      country: undefined,
-      humidity: undefined,
-      description: undefined,
-      error: "Please enter the value",
-    })
-    console.log(this.state); // TODO: Update state
-  }
+    weather_weekday = async({match})=>{
+      
+      const api_call_2 = await fetch ("https://random-weather-api.herokuapp.com/weather")
+      const data= await api_call_2.json();
+      for (var i=0;i<data.length;i++){
+         if(data[i].weekday===match.params.day){
+          this.setState({
+         
+            day:data[i].weekday,
+            temperature:data[i].temperature,
+            humidity:data[i].humidity,
+            description:data[i].description,
+          });
+        console.log(this.state); // TODO: Update state*/
+         }
+      }
+
+       
  };
+ 
 
   render(){ 
       return (
-        <div>
-          <Titles/>
-          <Form getWeather={this.getWeather} />
-          <Weather temperature= {this.state.temperature}
-                    city =  {this.state.city}
-                    country=   {this.state.country} 
-                     humidity= {this.state.humidity}
-                     description = {this.state.description} 
-                     error= {this.state.error}/>
+        <Router>
+         <div>
+           <Titles/>
+          <Form weather_weekday={this.weather_weekday}
+                />
+          <Day 
+               temperature= {this.state.temperature}
+               day={this.state.day}
+                humidity= {this.state.humidity}
+                description = {this.state.description} />
+         <Route path="/:day" exact strict component= {Day} />
         </div>
+       </Router> 
       );
-        
+
     }
   };
+ 
+
  
   export default App;

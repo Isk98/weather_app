@@ -1,16 +1,25 @@
 import React from "react";
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 class Form extends React.Component{
+
     render(){
         return(
-            <form onSubmit={(e) => {
-                this.props.getWeather(this.state.city, this.state.country) 
-                e.preventDefault();}
-            }> 
-                <input type="text" name ="city" placeholder="city" onChange={(e) => this.setState({city: e.target.value})}/>
-                <input type="text" name ="country" placeholder="country" onChange={(e) => this.setState({country: e.target.value})}/>
-                <button>Get weather</button>
-            </form>
+             <div className="dropdown">
+                 <button className="dropbtn">Select</button>
+                   <div className="dropdown-content">
+                    
+                    <Link to="/weather/monday"onClick={()=>{this.props.weather_weekday.bind('match')}}>monday</Link>
+                    <Link to="/weather/tuesday"onClick={()=>{this.props.weather_weekday.bind('match')}}>tuesday</Link>
+                    <Link to="/weather/wednesday"onClick={()=>{this.props.weather_weekday.bind('match')}}>wednesday</Link>
+                    <Link to="/weather/thursday" onClick={()=>{this.props.weather_weekday.bind('match')}}>thursday</Link>
+                    <Link to="/weather/friday" onClick={()=>{this.props.weather_weekday.bind('match')}}>friday</Link>
+                    <Link to="/weather/saturday" onClick={()=>{this.props.weather_weekday.bind('match')}}>saturday</Link>
+                    <Link to="/weather/sunday" onClick={()=>{this.props.weather_weekday.bind('match')}}>sunday</Link>
+                   
+                </div>
+                </div>
+           
+            
         );
     }
 
