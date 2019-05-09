@@ -8,7 +8,7 @@ class Form extends React.Component{
                  <button className="dropbtn">Select</button>
                    <div className="dropdown-content">
                     
-                    <Link to="/weather/monday"onClick={()=>{this.props.weather_weekday.bind('match')}}>monday</Link>
+                    <Link to="/weather/monday"onClick={()=> this.props.weather_weekday('Mon')}>monday</Link>
                     <Link to="/weather/tuesday"onClick={()=>{this.props.weather_weekday.bind('match')}}>tuesday</Link>
                     <Link to="/weather/wednesday"onClick={()=>{this.props.weather_weekday.bind('match')}}>wednesday</Link>
                     <Link to="/weather/thursday" onClick={()=>{this.props.weather_weekday.bind('match')}}>thursday</Link>

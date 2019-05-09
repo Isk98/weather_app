@@ -16,12 +16,11 @@ class App extends React.Component{
   };
   
 
-    weather_weekday = async({match})=>{
-      
+    weather_weekday = async (day) => {      
       const api_call_2 = await fetch ("https://random-weather-api.herokuapp.com/weather")
       const data= await api_call_2.json();
       for (var i=0;i<data.length;i++){
-         if(data[i].weekday===match.params.day){
+        if(data[i].weekday===day){
           this.setState({
          
             day:data[i].weekday,
