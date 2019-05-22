@@ -33,4 +33,15 @@
   
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+ .image{
+   width: 100px;
+   height:100px;
+ }
+ .image-div{
+   float:right;
+   padding-top:-10px;
+   width: 150px;
+   height: 110px;
+ }
+
   
