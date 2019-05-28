@@ -8,6 +8,7 @@ import './App.css';
 
 
 
+
 class App extends React.Component{
   state = {
     temperature :undefined,
@@ -22,7 +23,7 @@ class App extends React.Component{
 weather_weekday = async (day) => {      
     const api_call_2 = await fetch ("https://random-weather-api.herokuapp.com/weather")
     const data= await api_call_2.json();
-    for (var i=0;i<data.length;i++){
+   for (var i=0;i<data.length;i++){
       if(data[i].weekday===day){
         this.setState({
           day:data[i].weekday,
@@ -39,9 +40,9 @@ weather_weekday = async (day) => {
    
  setImage=(description)=>{
     return(
-      <div className="image-div">
-      <img className="image" src={require(`./${description}.png`)} />
-      </div>
+      <span className="image-span">
+      <img className="image" src={require(`./assets/images/${description}.png`)} alt="" />
+      </span>
     )
    
   }
@@ -50,7 +51,7 @@ weather_weekday = async (day) => {
     
     return (
       <Router>
-       <div>
+       
          <Titles/>
          <Form weather_weekday={this.weather_weekday}/>
          <Weather
@@ -61,7 +62,7 @@ weather_weekday = async (day) => {
                 img = {this.state.img} />
               
        <Route path="/:day" exact strict component= {Weather} />
-      </div>
+     
      </Router> 
      
     );
