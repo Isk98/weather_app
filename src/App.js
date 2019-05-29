@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Titles from "./Components/Titles";
 import Form from "./Components/Form";
 import Weather from "./Components/Weather";
+import WeatherOfWeek from "./Components/WeatherOfWeek";
 import './App.css';
 
 
@@ -15,7 +16,10 @@ class App extends React.Component{
     humidity :undefined,
     description :undefined,
     day:undefined,
-    img: undefined
+    img: undefined,
+    week_data:[],
+    isHidden_day: false,
+    isHidden_week:false
   };
  
 
@@ -30,11 +34,28 @@ weather_weekday = async (day) => {
           temperature:data[i].temperature,
           humidity:data[i].humidity,
           description:data[i].description,
+          isHidden_day:true,
+          isHidden_week:false,
           img : this.setImage(data[i].description.toLowerCase())
         });
       console.log(this.state); // TODO: Update state
        }
     }
+    
+
+  };
+
+  weather_week= async ()=>{
+    const api_call_2 = await fetch ("https://random-weather-api.herokuapp.com/weather")
+    const data= await api_call_2.json();
+    this.setState({
+     week_data:data,
+     isHidden_week:true,
+     isHidden_day:false
+    });
+    console.log(this.state);
+    
+
   };
 
    
@@ -53,15 +74,22 @@ weather_weekday = async (day) => {
       <Router>
        
          <Titles/>
-         <Form weather_weekday={this.weather_weekday}/>
-         <Weather
+         <Form weather_weekday={this.weather_weekday}
+               weather_week={this.weather_week}
+               display={this.state.display}/>
+         {this.state.isHidden_day && <Weather 
                temperature= {this.state.temperature}
                day={this.state.day}
                 humidity= {this.state.humidity}
                 description = {this.state.description}
-                img = {this.state.img} />
+                img = {this.state.img}
+                week_data={this.state.week_data} />}
+        {
+          this.state.isHidden_week&&
+         <WeatherOfWeek week_data = {this.state.week_data} />}
               
        <Route path="/:day" exact strict component= {Weather} />
+       <Route path="/week" exact strict component={WeatherOfWeek} />
      
      </Router> 
      

@@ -5,8 +5,25 @@
     margin:60px;
     margin:auto;
     background-color:#9ce5da;
+    
+    
+   
 }
 
 .temp{
     font-size:40px;
 }
+
+
+
+.ww-div{
+    width:30px;
+    height:10px;
+    float:left;
+    background-color:#9ce5da;
+    margin-left:60px;
+    margin-right:30px;
+    margin-top:70px;
+    padding-right:40px;
+}
+

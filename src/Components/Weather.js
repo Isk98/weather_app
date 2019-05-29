@@ -5,6 +5,7 @@ import "./Component.css"
 class Weather extends React.Component {
     
       render(){
+             
         
        return(
           
@@ -15,7 +16,7 @@ class Weather extends React.Component {
                          {this.props.humidity&&<p>Humidity: {this.props.humidity}%</p>}
                          {this.props.description&&<p>Description: {this.props.description}</p>}
                          
-                    </div>
+                  </div>
     
                   
                
