@@ -1,3 +1,5 @@
+
+
 .main-div{
     width:300px;
     height:300px;
@@ -5,6 +7,7 @@
     margin:60px;
     margin:auto;
     background-color:#9ce5da;
+    
     
     
    
@@ -17,8 +20,8 @@
 
 
 .ww-div{
-    width:30px;
-    height:10px;
+    width:-350px;
+    height:-350px;
     float:left;
     background-color:#9ce5da;
     margin-left:60px;
@@ -26,4 +29,6 @@
     margin-top:70px;
     padding-right:40px;
 }
+
+
 
