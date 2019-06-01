@@ -5,11 +5,10 @@ import "./Component.css"
 class Weather extends React.Component {
     
       render(){
-             
-        
-       return(
+       
+         return(
           
-                  <div className="main-div">
+                  <div className="dailyWeather-div">
                          {this.props.img&&<p> {this.props.img}</p>}
                          {this.props.day&&<p>{this.props.day}</p>}
                          {this.props.temperature&&<h1 className="temp">{this.props.temperature}°C</h1>}

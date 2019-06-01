@@ -47,7 +47,7 @@ class Form extends React.Component{
                     <Link to={{pathname: `/weather/${ditaa[4]}`}} onClick={()=>{this.props.weather_weekday(ditaa[4].slice(0,3))}}>{ditaa[4]}</Link>
                     <Link to={{pathname: `/weather/${ditaa[5]}`}}onClick={()=>{this.props.weather_weekday(ditaa[5].slice(0,3))}}>{ditaa[5]}</Link>
                     <Link to={{pathname: `/weather/${ditaa[6]}`}} onClick={()=>{this.props.weather_weekday(ditaa[6].slice(0,3))}}>{ditaa[6]}</Link>
-                    <Link to ="/weather/week" onClick={()=>this.props.weather_week()}>All week </Link>
+                    <Link to ="/weather/week" onClick={()=>this.props.weather_week()} >All week </Link>
                 </div>
             </div>
            

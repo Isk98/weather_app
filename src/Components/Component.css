@@ -1,6 +1,6 @@
 
 
-.main-div{
+.dailyWeather-div{
     width:300px;
     height:300px;
     padding:10px;
@@ -9,8 +9,6 @@
     background-color:#9ce5da;
     
     
-    
-   
 }
 
 .temp{
@@ -18,17 +16,41 @@
 }
 
 
-
-.ww-div{
-    width:-350px;
-    height:-350px;
+.weather-list-item{
+    width:200px;
+    height:220px;
+    padding-left:20px;
     float:left;
+    margin-right:100px;
+    margin-left:20px;
+    
+    
     background-color:#9ce5da;
-    margin-left:60px;
-    margin-right:30px;
-    margin-top:70px;
-    padding-right:40px;
 }
+.first-row{
+    margin-top:10px;
+    height:250px;
+}
+.second-row{
+    margin-top:0px;
+    height:250px;
+}
+.item2{
+    margin-top:-20px;
+    
+}
+
+.item3{
+    margin-top:-20px;
+}
+
+.item6{
+    margin-top:-20px;
+}
+.item4{
+    margin-top:0px;
+}
+
 
 
 

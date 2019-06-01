@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Titles from "./Components/Titles";
 import Form from "./Components/Form";
 import Weather from "./Components/Weather";
-import WeatherOfWeek from "./Components/WeatherOfWeek";
+import WeeklyWeather from "./Components/WeeklyWeather";
 import './App.css';
 
 
@@ -67,6 +67,7 @@ weather_weekday = async (day) => {
     )
    
   }
+  
 
   render(){
     
@@ -76,7 +77,7 @@ weather_weekday = async (day) => {
          <Titles/>
          <Form weather_weekday={this.weather_weekday}
                weather_week={this.weather_week}
-               display={this.state.display}/>
+                display={this.state.display}/>
          {this.state.isHidden_day && <Weather 
                temperature= {this.state.temperature}
                day={this.state.day}
@@ -86,10 +87,11 @@ weather_weekday = async (day) => {
                 week_data={this.state.week_data} />}
         {
           this.state.isHidden_week&&
-         <WeatherOfWeek week_data = {this.state.week_data} />}
+         <WeeklyWeather week_data = {this.state.week_data} />}
+         
               
        <Route path="/:day" exact strict component= {Weather} />
-       <Route path="/week" exact strict component={WeatherOfWeek} />
+       <Route path="/week" exact strict component={WeeklyWeather} />
      
      </Router> 
      
